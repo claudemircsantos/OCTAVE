@@ -1,4 +1,4 @@
-Códigos envolvendo processamento digital de sinais:::
+Códigos envolvendo processamento digital de sinais de áudio :::
 
 analise_cepstral.m -> processa um segmento de som, definindo o espectro e o cepstro
 
