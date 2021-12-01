@@ -1,3 +1,10 @@
+*******************************************************
+* PRODUZIDO POR CLAUDEMIR C. SANTOS
+* claudemircsantos@uol.com.br
+* www.institutopoincare.com.br
+
+
+
 Códigos envolvendo processamento digital de sinais de áudio :::
 
 analise_cepstral.m -> processa um segmento de som, definindo o espectro e o cepstro
