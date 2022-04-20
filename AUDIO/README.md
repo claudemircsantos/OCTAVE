@@ -1,4 +1,4 @@
-## Copyright (C) 2022 claud
+## Copyright (C) 2022 INSTITUTO POINCARÉ
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -17,9 +17,6 @@
 ## Created: 20-abril-2022
 
 *******************************************************
-* PRODUZIDO POR CLAUDEMIR C. SANTOS
-* claudemircsantos@gmail.com
-* www.institutopoincare.com.br
 
 
 
