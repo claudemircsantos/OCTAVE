@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-## Author: Claudemir Costa Santos claudemircsantos@uol.com.br
+## Author: Claudemir Costa Santos claudemircsantos@gmail.com
 ## Created: 20-abril-2022
 
 *******************************************************
