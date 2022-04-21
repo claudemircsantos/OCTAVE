@@ -23,5 +23,6 @@ A idéia é explorar alguns comandos do OCTAVE, biblioteca IMAGE, este programa
 compõe um mini curso do INSTITUTO POINCARÉ.
 
 Atenciosamente
+
 Claudemir C. Santos
 
