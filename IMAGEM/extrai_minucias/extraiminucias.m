@@ -32,7 +32,7 @@ I = 255-I;
 %Binariza a imagem I
 binarizado = im2bw(I);
 
-%Reduz a espessura das linha e novamente cria um negativo 
+%Reduz a espessura das linha e novamente cria um negativo
 ex=bwmorph(binarizado,'thin',inf);
 ex=imcomplement(ex);
 rcb=ex;
@@ -44,35 +44,35 @@ h=waitbar(0,"Processando...");
 for i=1:m-2
   for j=1:n-2
 
-%Esta janela será comparada com o padrão de minúcia  
+%Esta janela será comparada com o padrão de minúcia
 janelah = [ex(i,j) ex(i,j+1) ex(i,j+2) ; ex(i+1,j) ex(i+1,j+1) ex(i+1,j+2)];
 
- if ((janelah(1,1)==1) && (janelah(1,2)==0) && (janelah(1,3)==1) && ... 
+ if ((janelah(1,1)==1) && (janelah(1,2)==0) && (janelah(1,3)==1) && ...
    (janelah(2,1)==0) && (janelah(2,2)==0)   && (janelah(2,3)==0)) || ...
    % próxima minúcia
    ((janelah(1,1)==0) && (janelah(1,2)==0) && (janelah(1,3)==0) && ...
-   (janelah(2,1)==1) && (janelah(2,2)==0)  && (janelah(2,3)==1)) || ... 
+   (janelah(2,1)==1) && (janelah(2,2)==0)  && (janelah(2,3)==1)) || ...
    % próxima minúcia
-   ((janelah(1,1)==0) && (janelah(1,2)==1) && (janelah(1,3)==1) && ... 
+   ((janelah(1,1)==0) && (janelah(1,2)==1) && (janelah(1,3)==1) && ...
    (janelah(2,1)==0) && (janelah(2,2)==0)   && (janelah(2,3)==0)) || ...
    % próxima minúcia
-   ((janelah(1,1)==0) && (janelah(1,2)==0) && (janelah(1,3)==0) && ... 
+   ((janelah(1,1)==0) && (janelah(1,2)==0) && (janelah(1,3)==0) && ...
    (janelah(2,1)==0) && (janelah(2,2)==1)   && (janelah(2,3)==1)) || ...
    % próxima minúcia
-   ((janelah(1,1)==1) && (janelah(1,2)==1) && (janelah(1,3)==0) && ... 
+   ((janelah(1,1)==1) && (janelah(1,2)==1) && (janelah(1,3)==0) && ...
    (janelah(2,1)==0) && (janelah(2,2)==0)   && (janelah(2,3)==0)) || ...
    % próxima minúcia
-   ((janelah(1,1)==0) && (janelah(1,2)==0) && (janelah(1,3)==0) && ... 
-   (janelah(2,1)==1) && (janelah(2,2)==1)   && (janelah(2,3)==0)) 
-   
+   ((janelah(1,1)==0) && (janelah(1,2)==0) && (janelah(1,3)==0) && ...
+   (janelah(2,1)==1) && (janelah(2,2)==1)   && (janelah(2,3)==0))
+
     if (i>2) && (j>4)
- %Desenha os losangos nas minúcias encontradas 
+ %Desenha os losangos nas minúcias encontradas
   I(i-2,j-2)=255; I(i-1,j-1)=255; I(i,j)=255;     I(i+1,j-1)=255; I(i+2,j-2)=255;
   I(i+1,j-3)=255; I(i,j-4)=255;   I(i-1,j-3)=255;
   rcb(i-2,j-2)=0; rcb(i-1,j-1)=0; rcb(i,j)=0; rcb(i+1,j-1)=0;rcb(i+2,j-2)=0;
   rcb(i+1,j-3)=0; rcb(i,j-4)=0;  rcb(i-1,j-3)=0;
     endif
- endif 
+ endif
 
 %Esta janela será comparada com o padrão de minúcia, ela é vertical
 janelav = [ex(i,j) ex(i,j+1); ex(i+1,j) ex(i+1,j+1); ex(i+2,j) ex(i+2,j+1)];
@@ -100,19 +100,21 @@ janelav = [ex(i,j) ex(i,j+1); ex(i+1,j) ex(i+1,j+1); ex(i+2,j) ex(i+2,j+1)];
     ((janelav(1,1)==0) && (janelav(1,2)==1) && ...
      (janelav(2,1)==0) && (janelav(2,2)==1) && ...
      (janelav(3,1)==0) && (janelav(3,2)==0))
-     
+
     if (i>2) && (j>4)
     I(i-2,j-2)=255;I(i-1,j-1)=255;I(i,j)=255;I(i+1,j-1)=255;I(i+2,j-2)=255;
   I(i+1,j-3)=255; I(i,j-4)=255;  I(i-1,j-3)=255;
-  
+
   rcb(i-2,j-2)=0;rcb(i-1,j-1)=0;rcb(i,j)=0;rcb(i+1,j-1)=0;rcb(i+2,j-2)=0;
   rcb(i+1,j-3)=0; rcb(i,j-4)=0;  rcb(i-1,j-3)=0;
 
      endif
 
-   endif 
-    
-   endfor
+   endif
+
+ endfor
+
+%Chama barra de progresso
 waitbar(i/(m-1),h,"Processando ...");
 endfor
 
@@ -120,9 +122,6 @@ endfor
 % Encerra a barra de progresso
 delete(h);
 
-subplot(1,2,1), imshow(rcb);
-subplot(1,2,2), imshow(I);
-
-
-
-
+subplot(1,3,1), imshow(ex);  title('Imagem binarizada...');
+subplot(1,3,2), imshow(rcb); title('Resultado da busca por minúcias!');
+subplot(1,3,3), imshow(I);   title('Imagem real contendo a marcação das minúcias');
